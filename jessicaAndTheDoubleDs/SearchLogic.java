@@ -28,7 +28,7 @@ public class SearchLogic{
 		ArrayList<String> searchTerm = new ArrayList<>();
 	
 		// While there are still search terms...
-		while(searchTerms.hasNext()) 
+		while(searchTerms.hasNext()) //
 		{
 			// Load the ArrayList with search terms
 			searchTerm.add( searchTerms.next() );
