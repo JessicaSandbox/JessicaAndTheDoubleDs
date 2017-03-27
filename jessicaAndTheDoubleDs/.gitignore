@@ -1,6 +1,16 @@
 /SearchEngine.class
+<<<<<<< HEAD
 /SearchLogic.class
 /GUI$theHandler.class
 /GUI.class
 /Index.class
 /Utils.class
+=======
+/GUI.class
+/Main.class
+/Index.class
+/SearchLogic.class
+/Utils.class
+/GUI$thehandler.class
+/GUI$theHandler.class
+>>>>>>> refs/heads/Linkhart_Branch
