@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 public class Utils 
 {
+	// Parses the specified file and loads words into wordIndex
+	// Returns word count
 	public static Integer parseFile(File file)
 	{
 		Integer numWords = 0;
