@@ -9,11 +9,11 @@ import java.util.Scanner;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
+// import javax.swing.table.DefaultTableModel;
 
 public class Index {
 
-	
+	static Object[] row = new Object[2];
 	final static int fileColumn = 0;
 	final static int statusColumn = 1;	
 	static File indexFile = new File( "index.txt" );
@@ -25,7 +25,62 @@ public class Index {
 	static ArrayList<String> wordIndex = new ArrayList<>();
 	/* Ref for 2-D array lists:  List<List<String>> listOfLists = new ArrayList<List<String>>();
 	   listOfLists.add(new ArrayList<String>()) */
+	static List<Integer> wordCount = new ArrayList<Integer>();
 	
+	
+public static void initIndex()
+{
+	// Initialize file table and data structure 
+	// If the index file exists...
+	if ( indexFile.exists() )
+	{
+		readIndexFile();
+		
+		// Populate files table
+	    if (numFiles > 0)
+	    {
+	    	// Loop through files in index
+	    	for (int i = 0; i <= (numFiles - 1); ++i)
+	    	{
+	    		// Put the file name in the table
+	    		row[fileColumn] = fileNames.get(i);
+			    
+	    		// Create a reference to the file 
+	    		File file = new File(fileNames.get(i));
+	    		// If the file still exists...
+	    		if ( file.exists() )
+	    		{
+		    		// Check last modified date/time  of file
+	    			long timeModified = (long)file.lastModified();
+		
+	    			// If the file has not changed...
+	    			if (lastMod.get(i) == timeModified)
+	    			{
+	    				row[statusColumn] = "Indexed";
+	    			} // If file unchanged
+	    			else // The file changed
+	    			{
+	    				row[statusColumn] = "File changed since last indexed";
+	    			} // Else the file changed
+	    		} // If file exists
+	    		else // The file no longer exists...
+	    		{
+	    			row[statusColumn] = "File no longer exists";
+	    		}
+	    		// Update table
+	    		GUI.fileTableModel.addRow(row);
+	    	} // For 
+		} // If numFiles > 0
+	} // If index file exists
+	else // The index file does not exist
+	{
+		numFiles = 0;
+		writeIndexFile();
+	}
+
+}	
+	
+/*	
 	//parseFile
 	public static void parseFile(File file)
 	{
@@ -45,7 +100,7 @@ public class Index {
 		{
 			e.printStackTrace();
 		} // Catch
-    } // parseFile
+    } // parseFile */
 	
 	// Add a file
 	public static void addFile()
@@ -60,8 +115,7 @@ public class Index {
 			String fileName = f.getAbsolutePath();
 			//for jtable on file tab
 	//		DefaultTableModel fileTableModel = new DefaultTableModel();
-			Object[] row = new Object[2];
-
+	//		Object[] row = new Object[2];
 	
 			// Update file table
 			row[fileColumn] = fileName;
@@ -81,7 +135,7 @@ public class Index {
 			lastMod.add( file.lastModified() );
 
 			// Parse the file and add the words to the data structure
-			Utils.parseFile(file);
+			wordCount.add( Utils.parseFile( file ) );
 		
 			// Write the updated data to the index file
 			writeIndexFile();
@@ -100,6 +154,12 @@ public class Index {
 	{
 		// Get row selected by user for deletion
 		int rowToRemove =  GUI.fileTable.getSelectedRow();
+		
+		JOptionPane.showMessageDialog( 
+				null, 
+				"rowToRemove", 
+				"removeFile", 
+				JOptionPane.WARNING_MESSAGE );
 	
 		// Remove the row from the table
 		GUI.fileTableModel.removeRow(rowToRemove);
@@ -108,6 +168,7 @@ public class Index {
 		--numFiles;
 		fileNames.remove(rowToRemove);
 		lastMod.remove(rowToRemove);
+		wordCount.remove( rowToRemove );
 
 		updateIndex();
 } // removeFile	
@@ -139,7 +200,8 @@ public class Index {
 			   // Set the last modified parameter in the data structure
 			   lastMod.set(i, timeModified);
 						
-			   parseFile(file);
+			   // Set the word count for the file in the data structure
+			   wordCount.set( i, Utils.parseFile( file ) );
 			
 			   // Update table
 		       GUI.fileTableModel.setValueAt("Indexed", i, statusColumn);
@@ -153,6 +215,7 @@ public class Index {
     			--numFiles;
     			fileNames.remove(i);
     			lastMod.remove(i);
+    			wordCount.remove( i );
     			
     			// Make sure all files are indexed
     			updateIndex();
@@ -179,6 +242,9 @@ public class Index {
 
 					// Write last modification date/time
 					outputFile.println(lastMod.get(i));
+					
+					// Write word count for file
+					outputFile.println( wordCount.get( i ) );
 				} // For
 				// Loop to write indexed words
 				for (int i = 0; i <= (wordIndex.size() - 1); ++i)
@@ -198,37 +264,39 @@ public class Index {
      } // writeIndexFile
 	
 	// Read the index file
-	public void readIndexFile()
+	public static void readIndexFile()
 	// Need to be able to handle corrupted file? - Doug Linkhart
+	{
+		try 
 		{
-		
-				try 
+			Scanner inputFile = new Scanner(indexFile);
+			numFiles = inputFile.nextInt();
+			if (numFiles > 0) // If files have been indexed
+			{
+				// Loop to read file names and last modification dates/times
+				for (int i = 1; i <= numFiles; ++i) 
 				{
-					Scanner inputFile = new Scanner(indexFile);
-					numFiles = inputFile.nextInt();
-					if (numFiles > 0) // If files have been indexed
-					{
-						// Loop to read file names and last modification dates/times
-						for (int i = 1; i <= numFiles; ++i) 
-						{
-							// Read file Name
-							fileNames.add(inputFile.next()); // Read file Name
+					// Read file Name
+					fileNames.add(inputFile.next()); // Read file Name
 
-							// Read last modification date/time
-							lastMod.add(inputFile.nextLong()); 
-						} // For
-						while(inputFile.hasNext()) // While there are more words...
-						{
-							// Read indexed words
-							wordIndex.add(inputFile.next()); 
-						} // While
-					} // If files have been indexed
+					// Read last modification date/time
+					lastMod.add(inputFile.nextLong()); 
 					
-					inputFile.close(); // Close the file
-				} // Try
-				catch (FileNotFoundException e) 
+					// Read word count for file
+					wordCount.add( inputFile.nextInt() );
+				} // For
+				while(inputFile.hasNext()) // While there are more words...
 				{
-					e.printStackTrace();
-				} // Catch
-		} // readIndexFile Method
+					// Read indexed words
+					wordIndex.add(inputFile.next()); 
+				} // While
+			} // If files have been indexed
+					
+			inputFile.close(); // Close the file
+		} // Try
+		catch (FileNotFoundException e) 
+		{
+			e.printStackTrace();
+		} // Catch
+	} // readIndexFile Method
 }//end of Index Class

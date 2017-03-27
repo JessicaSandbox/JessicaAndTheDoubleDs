@@ -4,27 +4,28 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class Utils {
-	
-			public static void parseFile(File file)
+public class Utils 
+{
+	public static Integer parseFile(File file)
+	{
+		Integer numWords = 0;
+		try
+		{
+			Scanner addedFile = new Scanner(file);
+			while(addedFile.hasNext())
 			{
-				try
-				{
-					Scanner addedFile = new Scanner(file);
-					while(addedFile.hasNext())
-					{
-						// Read and index words
-						Index.wordIndex.add(addedFile.next()); 
-					} // While
+				// Read and index words
+				Index.wordIndex.add(addedFile.next());
+				++ numWords; 
+			} // While
 				
-					// Close the file
-					addedFile.close();
-				} // Try
-				catch (FileNotFoundException e) 
-				{
-					e.printStackTrace();
-				} // Catch
-		} // parseFile
-
-
-}//end utils class
+			// Close the file
+			addedFile.close();
+		} // Try
+		catch (FileNotFoundException e) 
+		{
+			e.printStackTrace();
+		} // Catch
+		return numWords;
+	} // parseFile
+} // Class Utils

@@ -7,21 +7,21 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+// import java.io.File;
+// import java.io.FileNotFoundException;
+// import java.io.PrintWriter;
+// import java.util.ArrayList;
+// import java.util.List;
+// import java.util.Scanner;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComponent;
-import javax.swing.JFileChooser;
+// import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+// import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
@@ -37,14 +37,19 @@ public class GUI extends JPanel{ //implements ActionListener{
 		private static final long serialVersionUID = 1L;
 		
         // These need to be accessible to other classes
-		public static boolean orBtnSelected;
-		public static boolean andBtnSelected;
-		public static boolean phraseBtnSelected;
+	
+		// Initialize radio button status
+		public static boolean orBtnSelected     = true,
+				              andBtnSelected    = false,
+				              phraseBtnSelected = false;	
+
 		public static JTextArea txtResults= new JTextArea(25, 70);
 		public static JTextField txtSearchTerms= new JTextField( "Enter search terms here", 40 );
-		static DefaultTableModel fileTableModel = new DefaultTableModel();
+		public static DefaultTableModel fileTableModel = new DefaultTableModel();
 
-		public static JTable fileTable;
+		public static JTable fileTable = new JTable();
+		
+	//	public static Object[] row = new Object[2];
 		
 		// long lastMod;
 		
@@ -95,10 +100,7 @@ public class GUI extends JPanel{ //implements ActionListener{
 			searchPanel.add( btnAnd );
 			searchPanel.add( btnPhrase );
 			
-			// Initialize radio button status
-			Boolean orBtnSelected     = true,
-					andBtnSelected    = false,
-					phraseBtnSelected = false;			
+		
 
 			// new StringBuilder();
 			
@@ -122,7 +124,20 @@ public class GUI extends JPanel{ //implements ActionListener{
 			tabbedPane.addTab("Files", files);
 			
 			// Create JTable for files tab
-			JTable fileTable = new JTable();
+	//		JTable fileTable = new JTable();
+			
+			
+
+		 	
+			
+			// Search Terms
+	//		StringBuilder sbStringToParse = new StringBuilder();
+	//		final int fileColumn = 0;
+		//	final int statusColumn = 1;
+			
+			
+			
+			
 			String[] columnNames = {"File", "Status"};
 			fileTableModel.setColumnIdentifiers(columnNames);
 			fileTable.setModel(fileTableModel);
@@ -179,7 +194,9 @@ public class GUI extends JPanel{ //implements ActionListener{
 			// Add tab and About panel
 			tabbedPane.addTab("About", aboutPanel);
 			
-			add(tabbedPane);			
+			add(tabbedPane);	
+			
+			Index.initIndex();
 		}
 		
 		// Event handler
