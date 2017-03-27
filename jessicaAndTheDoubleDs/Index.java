@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class Index {
 
-	
+	//test commit for creating a new branch 
 	final static int fileColumn = 0;
 	final static int statusColumn = 1;	
 	static File indexFile = new File( "index.txt" );
