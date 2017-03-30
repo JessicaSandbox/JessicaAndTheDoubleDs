@@ -15,21 +15,27 @@ public class Index
 {
 	// Rows in two-column file table
 	static Object[] row = new Object[2];
+	
 	// Column reference constants
 	final static int fileColumn = 0;
 	final static int statusColumn = 1;
 	// Index file
+	
 	static File indexFile = new File( "index.txt" );
 
 	// Index data structure
 	// Number of files indexed
 	static int numFiles;
+	
 	// Pathnames of files 
 	static ArrayList<String> fileNames = new ArrayList<>();
+	
 	// Last file modification time/date
 	static List<Long> lastMod = new ArrayList<Long>();
+	
 	// List of words (word index)
 	static ArrayList<String> wordIndex = new ArrayList<>();
+	
 	// Word count for each file
 	static List<Integer> wordCount = new ArrayList<Integer>();
 		
@@ -51,6 +57,7 @@ public class Index
 			    
 					// Create a reference to the file 
 					File file = new File(fileNames.get(i));
+					
 					// If the file still exists...
 					if ( file.exists() )
 					{
@@ -62,16 +69,19 @@ public class Index
 						{
 							row[statusColumn] = "Indexed";
 						} // If file unchanged
+						
 						else // The file changed
 						{
 							row[statusColumn] = "File changed since last indexed";
 						} // Else the file changed
+						
 					} // If file exists
 					else // The file no longer exists...
 					{
 						row[statusColumn] = "File no longer exists";
 					}
 					// Update table
+					
 					GUI.fileTableModel.addRow(row);
 				} // For i
 			} // If numFiles > 0
