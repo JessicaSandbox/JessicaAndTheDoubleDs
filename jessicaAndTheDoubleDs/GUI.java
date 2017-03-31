@@ -35,9 +35,11 @@ public class GUI extends JPanel
 			              phraseBtnSelected = false;	
 
 	public static JTextArea txtResults = new JTextArea(25, 70);
-	public static JTextField txtSearchTerms = 
-			new JTextField( "Enter search terms here", 40 );
+	
+	public static JTextField txtSearchTerms = new JTextField( "Enter search terms here", 40 );
+	
 	public static DefaultTableModel fileTableModel = new DefaultTableModel();
+	
 	public static JTable fileTable = new JTable();
 		
 	public GUI()
@@ -65,7 +67,7 @@ public class GUI extends JPanel
 		btnSearch.setToolTipText("Click to search indexed files");
 		btnSearch.setActionCommand( "search" ); 
 	    btnSearch.addActionListener( handler );
-		    
+		    //OR, AND, PHRASE wording
 	    JRadioButton btnOr = new JRadioButton( "OR" );
 	    JRadioButton btnAnd = new JRadioButton( "AND" );
 	    JRadioButton btnPhrase = new JRadioButton( "Phrase" );
@@ -122,12 +124,14 @@ public class GUI extends JPanel
 		btnAddFile.setToolTipText("Open browse window to select and add a file");
 		btnAddFile.setActionCommand("addFile");
 		btnAddFile.addActionListener(handler);
-			
+		
+			//remove button
 		JButton btnRmvFile = new JButton("Remove File");
 		btnRmvFile.setToolTipText("Remove selected file");
 		btnRmvFile.setActionCommand("rmvFile");
 		btnRmvFile.addActionListener(handler);
-			
+		
+			//update button
 		JButton btnUpdateFiles = new JButton("Update Index");
 		btnUpdateFiles.setToolTipText("Update the index if they have been modified");
 		btnUpdateFiles.setActionCommand("updateIndex");

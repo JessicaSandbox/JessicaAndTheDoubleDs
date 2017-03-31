@@ -107,7 +107,9 @@ public class Index
 	
 			// Update file table
 			row[fileColumn] = fileName;
+			
 			row[statusColumn] = "Indexed";
+			
 			GUI.fileTableModel.addRow(row);
 
 			// Increment number of files
@@ -133,7 +135,7 @@ public class Index
 			JOptionPane.showMessageDialog( 
 					null, 
 					"You didn't select a file", 
-					"NO FILE SELECTED!!!", 
+					"ERROR - NO FILE SELECTED!", 
 					JOptionPane.WARNING_MESSAGE );
 	} // add File
 	
@@ -149,7 +151,7 @@ public class Index
 			JOptionPane.showMessageDialog( 
 				null, 
 				"You didn't select a file", 
-				"NO FILE SELECTED!!!", 
+				"ERROR - NO FILE SELECTED!!!", 
 				JOptionPane.WARNING_MESSAGE );
 		} // If a row was not selected
 		// If a row was selected...

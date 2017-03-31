@@ -149,6 +149,7 @@ public class SearchLogic{
 		{
 			// PHRASE search:
 			int wordLow = 0;
+			
 			boolean phraseFound;
 			// Loop through files
 			for (int fileNum = 0; fileNum < Index.numFiles; ++fileNum)
