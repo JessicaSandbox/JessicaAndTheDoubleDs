@@ -6,3 +6,6 @@
 /Transaction.class
 /TransationType.class
 /BankTest.class
+/TransactionType.class
+/Transaction$TransactionType.class
+/CheckingAccount$TransactionType.class

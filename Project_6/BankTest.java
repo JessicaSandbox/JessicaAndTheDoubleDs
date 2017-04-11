@@ -9,7 +9,7 @@ public class BankTest {
 	@Test
 	public void testBank() {
 		fail("Not yet implemented"); // TODO
-		Bank test = new Bank(testBank); 
+//		Bank test = new Bank(testBank); 
 		//takes string
 		//Creates object
 	}
@@ -17,7 +17,7 @@ public class BankTest {
 	@Test
 	public void testMain() {
 		fail("Not yet implemented"); // TODO
-		Bank("testBank");
+//		Bank("testBank");
 	}
 
 	@Test
