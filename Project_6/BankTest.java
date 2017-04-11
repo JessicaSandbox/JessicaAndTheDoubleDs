@@ -9,21 +9,33 @@ public class BankTest {
 	@Test
 	public void testBank() {
 		fail("Not yet implemented"); // TODO
+		Bank test = new Bank(testBank); 
+		//takes string
+		//Creates object
 	}
 
 	@Test
 	public void testMain() {
 		fail("Not yet implemented"); // TODO
+		Bank("testBank");
 	}
 
 	@Test
 	public void testAddAccount() {
 		fail("Not yet implemented"); // TODO
+		
+		//called when bank object is created
+		//gives account number
+		
+		
 	}
 
 	@Test
 	public void testRemoveAccount() {
 		fail("Not yet implemented"); // TODO
+		
+		
+		
 	}
 
 	@Test

@@ -7,11 +7,15 @@ import java.util.List;
 
 public class Bank {
 	
-	
-	
-	Bank(String bankName){
+	private static void Bank(String name){
 		
-		System.out.println("you have created:" + bankName);
+		//creates new bank object with given name
+		Bank bank1 = new Bank();
+		bank1.addAccount();
+		
+		
+		System.out.println("you have created:" + name);
+		
 		
 		
 	}
@@ -21,10 +25,13 @@ public class Bank {
 		// TODO Auto-generated method stub
 
 		System.out.println("hello bank");
+		Bank("MyBank");
 	}
 	
-	
+
 	void addAccount(){
+		
+		//creates new bank account
 		
 	}
 	
