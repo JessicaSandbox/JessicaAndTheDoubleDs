@@ -6,19 +6,39 @@ import org.junit.Test;
 
 public class BankTest {
 
+	// Tests Bank constructor
 	@Test
 	public void testBank() {
-		fail("Not yet implemented"); // TODO
-//		Bank test = new Bank(testBank); 
-		//takes string
-		//Creates object
-	}
+		// Create Bank object
+		Bank testBank = new Bank("Test Bank");
+		
+		// True if Bank object was created
+		assertTrue(testBank != null);
+		
+		// True if bank name is correct
+		assertTrue(testBank.Name == "Test Bank");
+	} // testBank
 
+	// Tests construction of Bank by main
+	// Tests Transaction constructor
 	@Test
 	public void testMain() {
-		fail("Not yet implemented"); // TODO
-//		Bank("testBank");
-	}
+		String[] mainTest = {"Main test"};
+		
+		// Run main
+		Bank.main(mainTest);
+		
+		// True if main created a Bank object
+		assertTrue(Bank.mainTestBank != null);
+		
+		// True if bank name is correct
+		assertTrue(Bank.mainTestBank.Name == "Main Test Bank");
+		
+		// True if transaction amount is correct
+		// Indicates that Transaction was created
+		// (Tests Transaction constructor)
+		assertTrue(Transaction.Amount == 123.45);
+	} // testMain
 
 	@Test
 	public void testAddAccount() {
@@ -26,16 +46,12 @@ public class BankTest {
 		
 		//called when bank object is created
 		//gives account number
-		
-		
 	}
 
 	@Test
 	public void testRemoveAccount() {
 		fail("Not yet implemented"); // TODO
-		
-		
-		
+	
 	}
 
 	@Test

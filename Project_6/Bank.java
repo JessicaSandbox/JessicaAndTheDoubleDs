@@ -10,16 +10,21 @@ import Project_6.TransactionType;
  */
 public class Bank {
 	
+	// Test code
+	static Bank mainTestBank;
+	public String Name;
+
 	// creates new bank object with given name
-	private static void Bank(String name){
+	public Bank(String name){
+		
+		// Test code
+		Name = name;
 		
 	//	Bank bank1 = new Bank();
 	//	bank1.addAccount();		
 		
-	//	System.out.println("you have created:" + name);
+		System.out.println("You have created: " + name);
 	}
-	
-	// static enum TransactionType {DEPOSIT, WITHDRAWAL};
 	
     /* Handles initialization tasks (such as persistence, if that was 
      * implemented in this project, which it is not)
@@ -27,10 +32,12 @@ public class Bank {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-    //		System.out.println("hello bank");
-    //		Bank("MyBank");
+    		System.out.println("Hello from Main!!!");
+    		
+    		// Create new Bank object
+    		mainTestBank = new Bank("Main Test Bank");
 		
-		// Just checking the Transaction constructor 
+		// Test Code: checking the Transaction constructor 
 		TransactionType type = TransactionType.DEPOSIT;
 		Transaction TTT = new Transaction(type, 123.45, "This is a deposit transaction");
 	} // Main

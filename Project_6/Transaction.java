@@ -4,9 +4,13 @@ package Project_6;
  * account.  (Note transfers are implemented as a pair of transactions.) */
 public class Transaction implements Comparable<Transaction> {
 	
+	// Test code
+	static double Amount;
+	
 	// Create a new transaction 
 	public Transaction(TransactionType type, double amount, String description) {
 		
+		Amount = amount;
 	}
 	
 	//@Override
