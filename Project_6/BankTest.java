@@ -16,7 +16,7 @@ public class BankTest {
 		assertTrue(testBank != null);
 		
 		// True if bank name is correct
-		assertTrue(testBank.Name == "Test Bank");
+		assertEquals(testBank.Name,  "Test Bank");
 	} // testBank
 
 	// Tests construction of Bank by main
@@ -32,7 +32,7 @@ public class BankTest {
 		assertTrue(Bank.mainTestBank != null);
 		
 		// True if bank name is correct
-		assertTrue(Bank.mainTestBank.Name == "Main Test Bank");
+		assertEquals(Bank.mainTestBank.Name, "Main Test Bank");
 		
 		// True if transaction amount is correct
 		// Indicates that Transaction was created
