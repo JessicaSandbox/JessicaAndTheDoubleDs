@@ -15,12 +15,12 @@ public class Transaction implements Comparable<Transaction> {
 	public Transaction(TransactionType type, double amount, 
 			           String description) {
 		
+		// Test code
 		Amount = amount;
 	}
 	
 	//@Override
 	public int compareTo(Transaction arg0) {
-		// TODO Auto-generated method stub
 		return 0;
 	} 
 	

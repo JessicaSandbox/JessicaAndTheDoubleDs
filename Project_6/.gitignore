@@ -9,3 +9,7 @@
 /TransactionType.class
 /Transaction$TransactionType.class
 /CheckingAccount$TransactionType.class
+/AccountTest.class
+/CustomerTest.class
+/SavingsAccountTest.class
+/TransactionTest.class

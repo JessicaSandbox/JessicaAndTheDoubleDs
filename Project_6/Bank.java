@@ -3,8 +3,8 @@ package Project_6;
 import java.util.List;
 import java.util.*;
 
-import Project_6.Transaction;
-import Project_6.TransactionType;
+// import Project_6.*;
+// import Project_6.TransactionType;
 
 /* Class Bank is responsible for the main method, managing customers, and 
  * keeping track of various fees and interest rates; only the fees and rates 
@@ -14,17 +14,15 @@ public class Bank { //
 	
 	// Test code
 	static Bank mainTestBank;
-	public String Name;
+	String Name;
 
 	// creates new bank object with given name
 	public Bank(String name){ //
 		
 		// Test code
 		Name = name;
-		
-	//	Bank bank1 = new Bank();
-	//	bank1.addAccount();		
-		
+
+		// Test code
 		System.out.println("You have created: " + name);
 	}
 	
@@ -32,16 +30,19 @@ public class Bank { //
      * implemented in this project, which it is not)
      */
 	public static void main(String[] args) { //
-		// TODO Auto-generated method stub
-
-    		System.out.println("Hello from Main!!!");
+	
+		// Test code
+    	System.out.println("Hello from Main");
     		
-    		// Create new Bank object
-    		mainTestBank = new Bank("Main Test Bank");
+    	// Test code
+    	// Create new Bank object
+        for (String string: args) {
+        	mainTestBank = new Bank(string);
+        }
 		
 		// Test Code: checking the Transaction constructor 
-		TransactionType type = TransactionType.DEPOSIT;
-		Transaction TTT = new Transaction(type, 123.45, "This is a deposit transaction");
+//		TransactionType type = TransactionType.DEPOSIT;
+	//	Transaction TTT = new Transaction(type, 123.45, "This is a deposit transaction");
 	} // Main
 
 	// Add a new customer to the bank, using a GUI 

@@ -1,97 +1,82 @@
 package Project_6;
 
 import static org.junit.Assert.*;
-
 import org.junit.Test;
+
+import java.util.List;
+import java.util.SortedSet;
 
 public class BankTest {
 
 	// Tests Bank constructor
 	@Test
-	public void testBank() {
+	public void testBank() { //
+		final String bankName = "Test Bank";
 		// Create Bank object
-		Bank testBank = new Bank("Test Bank");
+		Bank testBank = new Bank(bankName);
 		
 		// True if Bank object was created
-		assertTrue(testBank != null);
+		assertNotNull(testBank);
 		
 		// True if bank name is correct
-		assertEquals(testBank.Name,  "Test Bank");
+		assertEquals(testBank.Name,  bankName);
 	} // testBank
 
 	// Tests construction of Bank by main
 	// Tests Transaction constructor
 	@Test
-	public void testMain() {
-		String[] mainTest = {"Main test"};
+	public void testMain() { //
+		final String bankName = "Main Test Bank";
+		String[] mainTest = {bankName};
 		
 		// Run main
 		Bank.main(mainTest);
 		
 		// True if main created a Bank object
-		assertTrue(Bank.mainTestBank != null);
+		assertNotNull(Bank.mainTestBank);
 		
 		// True if bank name is correct
-		assertEquals(Bank.mainTestBank.Name, "Main Test Bank");
+		assertEquals(Bank.mainTestBank.Name, bankName);
 		
 		// True if transaction amount is correct
 		// Indicates that Transaction was created
 		// (Tests Transaction constructor)
-		assertTrue(Transaction.Amount == 123.45);
+	//	assertTrue(Transaction.Amount == 123.45);
 	} // testMain
-
-	@Test
-	public void testAddAccount() {
-		fail("Not yet implemented"); // TODO
-		
-		//called when bank object is created
-		//gives account number
-	}
-
-	@Test
-	public void testRemoveAccount() {
-		fail("Not yet implemented"); // TODO
 	
-	}
-
 	@Test
-	public void testGetAccounts() {
-		fail("Not yet implemented"); // TODO
+	public void testAddCustomer() { //
+		fail("Not yet implemented");
+//		String addCustomer ( String lastName, String firstName )
 	}
-
+	
 	@Test
-	public void testGetAccount() {
-		fail("Not yet implemented"); // TODO
+	public void testGetCustomer() { //
+		fail("Not yet implemented");
+//		public static Customer getCustomer(String customerId)
 	}
-
+	
 	@Test
-	public void testAddCustomer() {
-		fail("Not yet implemented"); // TODO
+	public void testGetCustomerList() { //
+		fail("Not yet implemented"); 
+//		List<Customer> getCustomer(String lastName, String firstName)
 	}
-
+	
 	@Test
-	public void testRemoveCustomer() {
-		fail("Not yet implemented"); // TODO
+	public void testGetAllCustomers() { //
+		fail("Not yet implemented");
+//		SortedSet<Customer> getAllCustomers ()
 	}
-
+	
 	@Test
-	public void testGetCustomers() {
-		fail("Not yet implemented"); // TODO
+	public void testRemoveCustomer() { //
+		fail("Not yet implemented"); 
+//		void removeCustomer(String customerId)
 	}
-
+	
 	@Test
-	public void testGetCustomerString() {
-		fail("Not yet implemented"); // TODO
+	public void testGetAllAccounts() { //
+		fail("Not yet implemented"); 
+//		SortedSet<Account> getAllAccounts ()
 	}
-
-	@Test
-	public void testGetCustomerStringString() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	@Test
-	public void testGetCustomersAccounts() {
-		fail("Not yet implemented"); // TODO
-	}
-
-}
+} // class BankTest
