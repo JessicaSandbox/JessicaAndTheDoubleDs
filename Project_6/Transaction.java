@@ -1,33 +1,89 @@
 package Project_6;
 
-/* Class Transaction objects represent any deposit, withdrawal, or other 
- * transaction on an account.  (Note transfers are implemented as a pair of 
- * transactions.)  This class contains files for a transaction ID, a timestamp
- * (the date and time of the transaction), the type of transaction, the 
- * amount, and a description.  None of these fields have setters.
+import java.time.*;
+
+/**
+ * @author wpollock
+ *
  */
 public class Transaction implements Comparable<Transaction> {
-	
-	// Test code
-	static double Amount;
-	
-	// Create a new transaction 
-	public Transaction(TransactionType type, double amount, 
-			           String description) {
-		
-		// Test code
-		Amount = amount;
-	}
-	
-	//@Override
-	public int compareTo(Transaction arg0) {
-		return 0;
-	} 
-	
-	/* Getters, setters, (for example, to get and possibly set the id, 
-	 * transaction timestamp, type, amount, and description), toString, and 
-	 * other methods as needed
-	 * 
-	 * You need to test any non-trivial methods your group decides are a good 
-	 * idea. */
-} // Class Transaction
+    private static int nextID = 1;
+
+    private final int id;
+    private final LocalDateTime timestamp;
+    private final TransactionType type;
+    private final double amount;
+    private final String description;
+    /**
+     * @param type The type of this transaction
+     * @param amount The amount of the transaction
+     * @param description The description of the transaction.
+     *        This may include check numbers, memo, payee, etc.
+     */
+    public Transaction(TransactionType type, double amount,
+            String description) {
+        this.id = 1;
+        this.type = null;
+        this.amount = 0.00;
+        this.description = "";
+        this.timestamp = LocalDateTime.now();
+        // Stub
+    }
+    
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return 0;  // Stub
+    }
+
+    /**
+     * @return the timestamp for this transaction
+     */
+    public LocalDateTime getTimestamp() {
+        return null;  // Stub
+    }
+    
+    /**
+     * @return the transaction type
+     */
+    public TransactionType getType() {
+        return null;  // Stub
+    }
+    
+    /**
+     * @return the amount of this transaction.
+     * Transaction amounts are always positive.
+     */
+    public double getAmount() {
+        return 0.00;  // Stub
+    }
+    
+    /**
+     * @return the description
+     */
+    public String getDescription() {
+        return null;  // Stub
+    }
+
+    @Override
+    public String toString() {
+    	return "";  // Stub
+    }
+
+    @Override
+    public int hashCode() {
+         return 1;  // Stub
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+            return false;  // Stub
+    }
+
+    @Override
+    public int compareTo(Transaction other) {
+        return 0;  // Stub
+    }
+
+}

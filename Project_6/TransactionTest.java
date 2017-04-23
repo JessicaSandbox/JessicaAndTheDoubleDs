@@ -18,7 +18,7 @@ public class TransactionTest {
 		assertNotNull(testTransaction);
 		
 		// True if transaction amount is correct
-		assertTrue(Transaction.Amount == transactionAmount);
+		assertTrue(testTransaction.getAmount() == transactionAmount);
 	}
 	
 } // Class TransactionTest

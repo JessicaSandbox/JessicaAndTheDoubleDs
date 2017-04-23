@@ -1,44 +1,134 @@
 package Project_6;
 
+import java.time.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
-/* Class Account is responsible for managing the details of any type of 
- * account, including an accountId, customerId, description, account 
- * creation date, the current balance, and the account's transaction list.
- * Only the account description has a setter.
+/**
+ * 
+ * @author wpollock
  */
-public abstract class Account {
-	
-	/* Constructor for abstract class, taking a customer, initial balance, and
-	 *  an account description. 
-	 */
-	Account ( Customer cust, double initBal, String desc ) { //
-		
-	}
-	
-	// Add money into account 
-	abstract void deposit (double amount); //
-	
-	// Remove money from account 
-	abstract void withdraw (double amount); //
+public abstract class Account implements Comparable<Account> {
+    private static int nextId = 1;
+
+    protected final Customer customer;
+    protected final String accountId;
+    protected String description;
+    protected final LocalDateTime creationDate;
+    // protected StatementCycle statementCycle; // An enum representing any
+    //                                          // possible statement cycle
+    protected double balance;
+    protected List<Transaction> transactions = new ArrayList<>();
+
+    /**
+     * @param amount
+     */
+    public abstract void deposit (double amount);
+
+    /**
+     * @param amount
+     */
+    public abstract void withdraw (double amount);
+
+    /** Transfer funds between two accounts of a single customer.
+     *
+     * @param fromAccount The source of the funds
+     * @param toAccount The account in which the funds will be deposited
+     * @param amount The amount to transfer
+     */
+    public static void transfer (Account fromAccount, Account toAccount,
+            double amount ) {
+    	  // Stub
+    }
+
+    /**
+     * @param cust Customer owning this account
+     * @param initialBalance Current balance
+     * @param accountDescription A description
+     */
+    public Account(Customer cust, double initialBalance,
+    		String accountDescription) {
+    	this.customer = cust;
+    	this.creationDate = LocalDateTime.now();
+    	this.accountId = "";
+    	  // Stub
+    }
+
+    /**
+     * @return The description for this account
+     */
+    public String getAccountDescription() {
+        return null;  // Stub
+    }
+
+    /**
+     * @param accountDescription The replacement description of this account
+     */
+    public void setAccountDescription(String accountDescription) {
+    	  // Stub
+    }
+
+    /**
+     * @return The current account balance
+     */
+    public double getBalance() {
+        return 0.00;  // Stub
+    }
+
+    /**
+     * @return read-only view of the account's transaction list
+     */
+    public List<Transaction> getTransactions() {
+        return null;  // Stub
+    }
+
+    /**
+     * @param transactionId  The id of the transaction to search for
+     * @return the matching transaction
+     * @throws IllegalArgumentException when no such transaction exists
+     */
+    public Transaction getTransaction ( int transactionId ) {
+    	return null;  // Stub
+    }
     
-	// Transfer funds between two accounts of a single customer.
-	static void transfer ( Account fromAccount, Account toAccount, 
-			               double amount ) { //
-		
-	}
-	
-	// Returns a List of all transactions for this account. 
-	List<Transaction> getTransactions () { //
-		return null;
-	}
-	
-	// Returns the specified transaction.
-	Transaction getTransaction ( int transactionId ) { //
-		return null;
-	}
-	
-	/* Getters, setters, toString, and other methods as needed
-	 * You need to test any non-trivial methods your group decides are a good 
-	 * idea. */ 
-} // Class Account
+    /**
+     * @return Account's ID
+     */
+    public String getAccountId() {
+        return null;  // Stub
+    }
+
+    /**
+     * @return the customer who owns this account
+     */
+    public String getCustomerId() {
+        return null;  // Stub
+    }
+
+    /**
+     * @return The date and time the account was created.
+     */
+    public LocalDateTime getAccountCreationDate() {
+        return null;  // Stub
+    }
+
+    @Override
+    public int hashCode() {
+        return 0;  // Stub
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return false;  // Stub
+    }
+
+    @Override
+    public int compareTo(Account other) {
+        return 1;  // Stub
+    }
+
+    @Override
+    public String toString() {
+        return null;  // Stub
+    }
+}

@@ -1,128 +1,127 @@
 package Project_6;
 
-import java.util.List;
 import java.util.*;
+import java.util.stream.Collectors;
 
-// import Project_6.*;
-// import Project_6.TransactionType;
-
-/* Class Bank is responsible for the main method, managing customers, and 
- * keeping track of various fees and interest rates; only the fees and rates 
- * have setter methods.
+/**
+ * @author wpollock
+ *
  */
-public class Bank { //
-	
-	// Test code
-	static Bank mainTestBank;
-	String Name;
+public class Bank {
+    private final String NAME;
+    private final Map<String, Customer> customers = new HashMap<>();
+    private double insufficientFundsPenalty = 10.00;  // Default, in dollars
 
-	// creates new bank object with given name
-	public Bank(String name){ //
-		
-		// Test code
-		Name = name;
-
-		// Test code
-		System.out.println("You have created: " + name);
-	}
-	
-    /* Handles initialization tasks (such as persistence, if that was 
-     * implemented in this project, which it is not)
+    /**
+     * @return the insufficientFundsPenalty
      */
-	public static void main(String[] args) { //
-	
-		// Test code
-    	System.out.println("Hello from Main");
-    		
-    	// Test code
-    	// Create new Bank object
-        for (String string: args) {
-        	mainTestBank = new Bank(string);
-        }
-		
-		// Test Code: checking the Transaction constructor 
-//		TransactionType type = TransactionType.DEPOSIT;
-	//	Transaction TTT = new Transaction(type, 123.45, "This is a deposit transaction");
-	} // Main
+    public  double getInsufficientFundsPenalty() {
+        return 0.00;  // Stub
+    }
 
-	// Add a new customer to the bank, using a GUI 
-	void addCustomerGUI () { //
-		
-	}
-	
-	// Add a new customer to the bank; return the customer's ID 
-	String addCustomer ( String lastName, String firstName ) { //
-		return null;
-	}
-	
-	// Get a Customer object, given a customer's ID 
-	public static Customer getCustomer(String customerId){ //
-		return null;
-		
-	}
-	
-	/* Get a List of Customer objects, given a customer's last and first 
-	 * names.  (In general there may be multiple customers with the same 
-	 * names; for testing, assume customer names are unique.)
-	 */
-	List<Customer> getCustomer(String lastName, String firstName){ //
-		return null;
+    /**
+     * @param insufficientFundsPenalty the insufficientFundsPenalty to set
+     */
+    public void setInsufficientFundsPenalty(double insufficientFundsPenalty) {
+    	  // Stub
+    }
 
-	}
-	
-	/* Generates a report of all current customers, in customer ID order, and 
-	 * returns a SortedSet of customers
-	 */
-	SortedSet<Customer> getAllCustomers () { //
-		return null;
-	}
-	
-	/* Deletes a customer from the bank.  (In reality, just marks the customer
-	 * as non-current.) */ 
-	void removeCustomer(String customerId){ //
-		
-	}
-	
-	/* Generates a report of all current accounts by all customers, in account
-	 *  ID order, and return a Sorted Set of accounts
-	 */
-	SortedSet<Account> getAllAccounts () { //
-		return null;
-	}
-          
-	/*    // Creates a new bank account 
-	void addAccount(){
+    /**
+     * @return the name
+     */
+    public String getNAME() {
+        return null;  // Stub
+    }
 
-	} */
-	
-	/* Deletes a given account.  (In the real world, just marks it as defunct 
-	 * or something.) 
-	 */
-	/* void removeAccount(String accountId){
-		
-	} */
-	
-	// Generates a report of all current accounts, in account ID order 
-	/* void getAccounts(){
-		
-	} */
-	
-	// Find an account given an account ID 
-	/* Account getAccount(String accountId){
-		return null;
-	} */
-		
-	// Generates a report of all current customers, in customer ID order 
-	/* void getCustomers(){
-		
-	} */
-	
-	// Return a List of a given customer's accounts (if any) 
-	/* List<Account> getCustomersAccounts(String customerId){
-		return null;
-	} */
-	
-	/* Getters, setters, toString, and other methods as needed
-	 * You need to test any non-trivial methods your group decides are a good 
-	 * idea. */ 
-} // Class Bank
+    /** Creates a new Bank object with the given name.
+     *
+     * @param name Name of the bank
+     */
+    public Bank ( String name ) {
+    	 this.NAME = "";  // Stub    
+	}
+
+    /** Starts up the Bank simulator
+     * @param args command line arguments - ignored
+     */
+    public static void main(String[] args) {
+        System.out.println("Hello from Bank");  // Stub
+    }
+
+    /** Adds a new bank account
+     *
+     */
+    public void addAccountWizard () {
+    	  // Stub
+    }
+
+    /** Generates a report of all current accounts, in account ID order
+     * @return A list of all accounts of all customers of this bank, sorted
+     * by ID.
+     *
+     */
+    public SortedSet<Account> getAllAccounts () {
+        // for each customer, get accounts and add to sorted set.
+        return null;  //Stub
+    }
+
+    /** Add a new customer to the bank, using a GUI form
+     *
+     */
+    public void addCustomerWizard () {
+    }
+
+    /** Add a new customer to the bank.
+     * @param lastName Customer's last (sur- or family) name
+     * @param firstName Customer's first (or given) name
+     * @return the customer's ID
+     */
+    public String addCustomer ( String lastName, String firstName ) {
+        return null;  // Stub
+    }
+
+    /** Deletes a customer from the bank.
+     * (In reality, just marks the customer as non-current.)
+     * @param customerId the ID of the customer to remove
+     */
+    public void removeCustomer ( String customerId) {
+    	  // Stub
+	}
+
+    /** Generates a report of all current customers, in customer ID order
+     * @return SortedSet of all customers at this bank.
+     */
+    public SortedSet<Customer> getAllCustomers () {
+        return null;  // Stub
+    }
+
+    /** Get a Customer object, given a customer's ID
+     *
+     * @param customerId The ID of the customer
+     * @return That customer's Account, or null
+     */
+    public Customer getCustomer ( String customerId ) {
+        return null;  // Stub
+    }
+
+    /** Get a List of Customer objects, given a customer's last and
+     * first names
+     *
+     * @param lastName The customer's last name
+     * @param firstName The customer's first name
+     * @return a List of Customers with that first and last name,
+     * or null if no such customer exists
+     */
+    public List<Customer> getCustomer ( String lastName, String firstName ) {
+        return null;  // Stub
+    }
+
+    /** Return a List of a given customer's accounts (if any)
+     *
+     * @param customerId The Customer ID who's account list is desired.
+     * @return a List of the accounts of that customer, if any.
+     */
+    public List<Account> getCustomersAccounts ( String customerId ) {
+        return null;  // Stub
+    }
+}

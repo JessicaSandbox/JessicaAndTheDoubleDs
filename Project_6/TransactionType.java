@@ -1,4 +1,9 @@
 package Project_6;
 
-// Enum TransactionType lists all possible transaction types.
-public enum TransactionType {DEPOSIT, WITHDRAWAL, INTEREST, CHECK, FEE, PENALTY, ADJUSTMENT}; 
+/** A list of the possible types of transactions in the banking simulation.
+ * @author wpollock
+ *
+ */
+public enum TransactionType {
+    DEPOSIT, WITHDRAWAL, INTEREST, CHECK, FEE, PENALTY, ADJUSTMENT;
+}
