@@ -1,14 +1,10 @@
 package Project_6;
 
 import static org.junit.Assert.*;
-
-import java.util.List;
-
 import org.junit.Before;
 import org.junit.Test;
 
-//import java.util.List;
-//import java.util.SortedSet;
+import java.util.List;
 
 public class AccountTest {
 	
@@ -25,6 +21,7 @@ public class AccountTest {
 	
 	final double initialBalance = 123.45;
 	
+	// Executes before tests are run
 	@Before
 	public void init() {
 				
@@ -39,7 +36,10 @@ public class AccountTest {
 				                            description);
 	}
 
-	// Test Account constructor
+	/* Test Account constructor
+	 * Account is tested indirectly using SavingsAccount, which extends 
+	 * Account
+	 */
 	@Test
 	public void testAccount() {
 		
@@ -78,7 +78,7 @@ public class AccountTest {
 		/* Withdraw one dollar.
 		 * This should reduce the balance by one dollar.
 		 */
-		savingsAccount.withdraw(initialBalance);
+		savingsAccount.withdraw(1.00);
 		
 		// True if balance is correct
 		assertTrue(savingsAccount.getBalance() == newBalance);

@@ -20,6 +20,7 @@ public class CustomerTest {
 	
 	final double initialBalance = 123.45;
 	
+	// Executes before tests are run
 	@Before
 	public void init() {
 				
