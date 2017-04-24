@@ -9,15 +9,17 @@ import java.util.SortedSet;
 public class BankTest {
 	
 	Bank testBankObj;
-	String bankName, custID, custID2, firstName, lastName;
+	
+	final String bankName = "Test Bank";
+	
+	final String lastName = "Jones";
+	final String firstName = "Tom";
+	
+	String custID, custID2;
 
 	// Executes before tests are run
 	@Before
 	public void init() {
-		final String lastName = "Jones";
-		final String firstName = "Tom";
-		
-		final String bankName = "Test Bank";
 	
 		// Create Bank object
 		testBankObj = new Bank(bankName);
@@ -156,10 +158,10 @@ public class BankTest {
 		// True if first customer ID is correct
 		assertEquals(accountsSet.first().getCustomerId(), custID);
 
-		// True if first customer ID is correct
+		// True if first account balance is correct
 		assertTrue(accountsSet.first().getBalance() == accountBalance);
 		
-		// True if first customer ID is correct
+		// True if first account description is correct
 		assertEquals(accountsSet.first().getAccountDescription(), 
 				     accountDescription);
 	} // testGetAllAccounts
