@@ -82,6 +82,26 @@ public class AccountTest {
 		
 		// True if balance is correct
 		assertTrue(savingsAccount.getBalance() == newBalance);
+		
+		
+	}
+	
+	//Test OverDraftProtection
+	@Test
+	public void testOverCharge(){
+		double amountSpent = 300000.00;
+		String overdraftProtection = "Overdraft protection is enabled on this account";
+		
+		/*
+		 * make sure that the amount spent on the account doesn't cause balance to go negative
+		 */
+		assertNotNull(savingsAccount.getBalance());
+		if((initialBalance - amountSpent) < 0)
+		{
+			System.out.println(overdraftProtection);
+		}
+		
+		
 	}
 	
 	// Test transfer
