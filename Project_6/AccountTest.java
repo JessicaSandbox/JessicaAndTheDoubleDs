@@ -54,6 +54,19 @@ public class AccountTest {
 	}
 	
 	// Test deposit
+	
+	@Test
+	public void testCustomer() {
+		
+		// True if account was created
+		assertNotNull(customer);
+		
+		// True if balance is correct
+		assertTrue(savingsAccount.getBalance() == initialBalance);
+		
+		// True if description is correct
+		assertEquals(savingsAccount.getAccountDescription(), description);
+	}
 	@Test
 	public void testDeposit() { 
 
@@ -200,4 +213,19 @@ public class AccountTest {
 			fail("Transaction list does not exist");
 		}
 	} // testGetTransaction
+	
+	//testing Penalty by 7%
+	@Test
+	public void testPenalty() {	
+
+		double feePercent = 0.07;
+		String penalty = "Penalty fee is included";
+		//late fee penalty is initianated 
+		assertNotNull(savingsAccount.getBalance());
+		//any withdraw over 250 gets charged by 7%
+		if((initialBalance * feePercent) < 250)
+		{
+			System.out.println(penalty);
+		}
+	} // testPenalty
 } // Class AccountTest
